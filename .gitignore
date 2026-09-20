@@ -1,3 +1,4 @@
 src/connect_four.egg-info
 .venv/
 src/connect_four/game_logic/__pycache__/
+src/connect_four/cli/__pycache__/
