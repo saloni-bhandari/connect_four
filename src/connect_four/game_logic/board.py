@@ -27,6 +27,9 @@ class Board:
     def is_column_full(self, column: int) -> bool:
         return self.cells[0][column] is not None
 
+    def is_full(self) -> bool:
+        return all(self.is_column_full(c) for c in range(self.columns))
+
     def lowest_empty_row(self, column: int) -> int | None:
         for row in reversed(range(self.rows)):
             if self.cells[row][column] is None:

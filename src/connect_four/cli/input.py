@@ -5,6 +5,7 @@ def ask_for_column(game_state: GameState) -> int:
     print(f"Current player: {game_state.current_player}\n")
     while True:
         player_input = input(f"Make your move! Enter a column number (1-{game_state.board.columns}) to place your next piece!\n")
+        print()
         try:
             column = int(player_input) - 1
         except ValueError:
