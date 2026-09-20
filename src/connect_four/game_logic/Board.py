@@ -1,16 +1,21 @@
 from dataclasses import dataclass
 
-from connect_four.game_logic.Piece import Piece
+from connect_four.game_logic.player import Player
 
-@dataclass
+Cell = Player | None
+
+@dataclass(frozen=True)
 class Board:
-    rows: int
-    columns: int
-    board: tuple[tuple[int, ...], ...]
-    pieces: tuple[Piece, ...] = tuple()
+    cells: tuple[tuple[Cell, ...], ...]
 
     @classmethod
-    def create_empty_board(cls, rows: int, columns: int) -> "Board":
-        empty_board = tuple(tuple(0 for _ in range(columns)) for _ in range(rows))
-        return cls(rows, columns, empty_board)
-    
+    def empty(cls, rows: int = 6, columns: int = 7) -> "Board":
+        return cls(tuple(tuple(None for _ in range(columns)) for _ in range(rows)))
+
+    @property
+    def rows(self) -> int:
+        return len(self.cells)
+
+    @property
+    def columns(self) -> int:
+        return len(self.cells[0])
