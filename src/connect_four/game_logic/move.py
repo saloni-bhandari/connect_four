@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from connect_four.game_logic import Player
+from connect_four.game_logic.player import Player
 
 
 @dataclass(frozen=True)
